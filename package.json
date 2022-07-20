@@ -1,0 +1,23 @@
+{
+  "name": "aradiabotjs",
+  "version": "1.0.0",
+  "description": "AradiaBot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wychwitch/AradiabotJS.git"
+  },
+  "author": "wych (witch)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wychwitch/AradiabotJS/issues"
+  },
+  "homepage": "https://github.com/wychwitch/AradiabotJS#readme",
+  "dependencies": {
+    "@keyv/sqlite": "^3.5.3",
+    "discord.js": "^14.0.3"
+  }
+}
