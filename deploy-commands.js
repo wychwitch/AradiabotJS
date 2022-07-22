@@ -9,7 +9,7 @@ const commands = [];
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs
   .readdirSync(commandsPath)
-  .filter((file) => file.endsWith(".js"));
+  .filter((file) => file.endsWith(".js") || file.endsWith(".mjs"));
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);

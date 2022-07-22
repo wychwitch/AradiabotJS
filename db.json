@@ -1,0 +1,45 @@
+{
+  "84514492938989568": {
+    "id": "84514492938989568",
+    "author": {
+      "id": "84514492938989568",
+      "bot": false,
+      "system": false,
+      "flags": 128,
+      "username": "Lilac-Imp",
+      "discriminator": "9538",
+      "avatar": "881a7904c7125a99df64a9eae70cbe25",
+      "createdTimestamp": 1440220225320,
+      "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/3.png",
+      "tag": "Lilac-Imp#9538",
+      "avatarURL": "https://cdn.discordapp.com/avatars/84514492938989568/881a7904c7125a99df64a9eae70cbe25.webp",
+      "displayAvatarURL": "https://cdn.discordapp.com/avatars/84514492938989568/881a7904c7125a99df64a9eae70cbe25.webp"
+    },
+    "date": 1658466654665,
+    "channel": {
+      "type": 0,
+      "guild": "620411502054080523",
+      "guildId": "620411502054080523",
+      "parentId": "620411502498938880",
+      "permissionOverwrites": [
+        "246549376363659265",
+        "624535228047949824"
+      ],
+      "messages": [
+        "999906332981346385",
+        "999906364526694460"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "id": "625831146474962964",
+      "name": "bot-rights",
+      "rawPosition": 5,
+      "topic": "dont talk in here or else- jade",
+      "lastMessageId": "999906364526694460",
+      "lastPinTimestamp": 1658465694000,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1569280172700
+    },
+    "message": "balls are finallhy working"
+  }
+}

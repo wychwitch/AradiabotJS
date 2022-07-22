@@ -1,11 +1,29 @@
 // Require the necessary discord.js classes
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { token } = require("./config.json");
+import { Low, JSONFile } from "lowdb";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const file = path.join(__dirname, "db.json");
+const adapter = new JSONFile(file);
+const db = new Low(adapter);
+
+db.data ||= { balls: [] };
 
 // Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.DirectMessages,
+  ],
+});
 
 // When the client is ready, run this code (only once)
 client.once("ready", () => {
@@ -20,14 +38,38 @@ const commandFiles = fs
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
-  const command = require(filePath);
+  const command = await import(filePath);
   // Set a new item in the Collection
   // With the key as the command name and the value as the exported module
-  client.commands.set(command.data.name, command);
+  client.commands.set(command.default.data.name, command);
 }
 
+client.on("messageCreate", async (message) => {
+  if (message.author.bot) return;
+
+  // handle messages in a guild
+  if (message.guild) {
+    if (message.content.includes("balls")) {
+      await db.read();
+      db.data[message.author.id] = {
+        id: message.author.id,
+        author: message.author,
+        date: message.createdTimestamp,
+        channel: message.channel,
+        message: message.content,
+      };
+      await db.write();
+
+      console.log("saved balls");
+
+      await db.read();
+    }
+    //console.log(message.content);
+  }
+});
+
 client.on("interactionCreate", async (interaction) => {
-  const command = client.commands.get(interaction.commandName);
+  const command = client.commands.get(interaction.commandName).default;
 
   if (!command) return;
 
