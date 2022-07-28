@@ -7,6 +7,7 @@ const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { token } = require("./config.json");
 import { Low, JSONFile } from "lowdb";
 import { fileURLToPath } from "url";
+const cron = require("cron");
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const file = path.join(__dirname, "db.json");
@@ -44,29 +45,10 @@ for (const file of commandFiles) {
   client.commands.set(command.default.data.name, command);
 }
 
-client.on("messageCreate", async (message) => {
-  if (message.author.bot) return;
+// client.on("messageCreate", async (message) => {
+//   if (message.author.bot) return;
 
-  // handle messages in a guild
-  if (message.guild) {
-    if (message.content.includes("balls")) {
-      await db.read();
-      db.data[message.author.id] = {
-        id: message.author.id,
-        author: message.author,
-        date: message.createdTimestamp,
-        channel: message.channel,
-        message: message.content,
-      };
-      await db.write();
-
-      console.log("saved balls");
-
-      await db.read();
-    }
-    //console.log(message.content);
-  }
-});
+// });
 
 client.on("interactionCreate", async (interaction) => {
   const command = client.commands.get(interaction.commandName).default;
@@ -84,6 +66,14 @@ client.on("interactionCreate", async (interaction) => {
     });
   }
 });
+
+let scheduledMessage = new cron.CronJob("0 12 * * TUE", () => {
+  // This runs every day at 10:30:00, you can do anything you want
+  let channel = client.channels.cache.get("739708891226439802");
+  channel.send("CHAINSAWMAN TIME!!!!!!");
+});
+
+scheduledMessage.start();
 
 // Login to Discord with your client's token
 client.login(token);

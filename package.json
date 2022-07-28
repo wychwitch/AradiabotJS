@@ -21,10 +21,11 @@
     "@discordjs/rest": "^1.0.0",
     "@keyv/sqlite": "^3.5.3",
     "@keyvhq/core": "^1.6.14",
+    "cron": "^2.1.0",
     "discord-api-types": "^0.36.2",
     "discord.js": "^14.0.3",
     "keyv": "^4.3.3",
     "lowdb": "^3.0.0"
   },
-   "type": "module"
+  "type": "module"
 }
