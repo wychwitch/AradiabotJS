@@ -70,7 +70,9 @@ client.on("interactionCreate", async (interaction) => {
 let scheduledMessage = new cron.CronJob("0 12 * * TUE", () => {
   // This runs every day at 10:30:00, you can do anything you want
   let channel = client.channels.cache.get("739708891226439802");
-  channel.send("CHAINSAWMAN TIME!!!!!!");
+  channel.send(
+    "CHAINSAWMAN TIME!!!!!!\n\n<https://www.viz.com/shonenjump/chapters/chainsaw-man?locale=en>"
+  );
 });
 
 scheduledMessage.start();
