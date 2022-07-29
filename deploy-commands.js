@@ -1,10 +1,15 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
-const { clientId, guildId, token } = require("./config.json");
+const fs = await import("node:fs");
+const path = await import("node:path");
+const { SlashCommandBuilder } = await import("@discordjs/builders");
+import { REST } from "@discordjs/rest";
+import { Routes } from "discord-api-types/v9";
+import { fileURLToPath } from "url";
+const data = await import('./config.json', {
+  assert: { type: 'json' }
+});
+const { clientId, guildId, token } = data.default;
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const commands = [];
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs
@@ -13,8 +18,8 @@ const commandFiles = fs
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
-  const command = require(filePath);
-  commands.push(command.data.toJSON());
+  const command = await import(filePath);
+  commands.push(command.default.data.toJSON());
 }
 
 const rest = new REST({ version: "9" }).setToken(token);

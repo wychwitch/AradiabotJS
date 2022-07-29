@@ -1,13 +1,35 @@
-{ 
-  "quotesList":[
+{
+  "quotesList": [
     {
-      "content":"quote",
-      "subject":"person",
-      "author":"Lilac-Imp#9538",
-      "date":"1/1/1991"
+      "content": "quote1",
+      "subject": "person",
+      "author": "Lilac-Imp#9538",
+      "date": "1/1/1991",
+      "link": "https://discord.com/channels/620411502054080523/625831146474962964/1002687917346533416"
+    },
+    {
+      "content": "quote2",
+      "subject": "person",
+      "author": "Lilac-Imp#9538",
+      "date": "1/1/1991",
+      "link": "https://discord.com/channels/620411502054080523/625831146474962964/1002687917346533416"
+    },
+    {
+      "content": "quote3",
+      "subject": "person",
+      "author": "Lilac-Imp#9538",
+      "date": "1/1/1991",
+      "link": "https://discord.com/channels/620411502054080523/625831146474962964/1002687917346533416"
+    },
+    {
+      "content": "quote4",
+      "subject": "person",
+      "author": "Lilac-Imp#9538",
+      "date": "1/1/1991",
+      "link": "https://discord.com/channels/620411502054080523/625831146474962964/1002687917346533416"
     }
   ],
-  "nicknames":{
-    "Lilac-Imp#9538":"chair"
+  "nicknames": {
+    "Lilac-Imp#9538": "chair"
   }
 }

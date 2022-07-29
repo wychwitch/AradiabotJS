@@ -3,7 +3,6 @@ const { SlashCommandBuilder } = await import("@discordjs/builders");
 const path = await import("node:path");
 const fs = await import("node:fs");
 import { fileURLToPath } from "url";
-import moment from 'moment';
 import { DateTime } from "luxon";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -15,18 +14,31 @@ const quotes = db.data.quotesList;
 const nicks = db.data.nicknames;
 
 
-class Quotes {
-    getRandomQuote() {
-        return quotes[Math.floor(Math.random() * items.length)];
+export class Quote {
+
+    static getAllQuotes() {
+        return quotes;
     }
-    getRandomQuoteList(amount) {
+
+    static getQuoteById(id) {
+        return quotes[id];
+    }
+
+    static getAllNames() {
+        return "oop"
+    }
+
+    static getRandomQuote() {
+        return quotes[Math.floor(Math.random() * quotes.length)];
+    }
+    static getRandomQuoteList(amount) {
         let quoteList = [];
         for (let i; i < amount; i++){
             quoteList.append(this.getRandomQuote());
         }
         return quoteList;
     }
-    async addQuote(quoteSubj, quoteContent, quoteAuth) {
+    static async addQuote(quoteSubj, quoteContent, quoteAuth) {
         await db.read();
         let quoteEntry = {
             content: quoteContent,
@@ -37,5 +49,5 @@ class Quotes {
         quotes.append(quoteEntry);
         await db.write();
     }
-
 }
+

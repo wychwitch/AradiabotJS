@@ -1,6 +1,9 @@
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
-const { clientId, guildId, token } = require("./config.json");
+import { REST } from "@discordjs/rest";
+import { Routes } from "discord-api-types/v9";
+const data = await import('./config.json', {
+  assert: { type: 'json' }
+});
+const { clientId, guildId, token } = data.default;
 
 const rest = new REST({ version: "9" }).setToken(token);
 
